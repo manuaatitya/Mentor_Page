@@ -251,7 +251,7 @@
 					<br>
 					<a class="anchor" href="mentee.html" id="normal_mentee">Login As Mentee</a>
 				-->
-					<input style="transform: translate(20vw,-60vh);" class="input" type="text" name="User_name" value="Manu Aatitya" id="normal_userName">
+					<input style="transform: translate(20vw,-60vh);" class="input" type="text" name="User_name" value="Manu Aatitya" id="mentee">
 				</div>
 				<div >
 					<img src="mentor-photo.jpg" width="100%" height="100%">
@@ -260,7 +260,7 @@
 					<br>
 					<a class="anchor" href="mentee.html" id="hacker_mentee">Login As Mentee</a>
 				-->
-					<input style="transform: translate(20vw,-60vh);" class="input" type="text" name="User_name" value="Manu Aatitya" id="hacker_userName">
+					<input style="transform: translate(20vw,-60vh);" class="input" type="text" name="User_name" value="Manu Aatitya" id="mentor">
 				</div>
 			</div>	
 			<footer>
@@ -280,18 +280,18 @@
 		<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; transform: translate(74vw,-70vh);">Mentor Sign In</button>
 		<button onclick="document.getElementById('id07').style.display='block'" style="width:auto; transform: translate(13vw,-70vh);">Mentee Sign In</button>
 		<div id="id07" class="modal">
-			<h1 style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
-				Hello Mentee
+			<h1 id="id08" style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
+				<!-- Hello Mentee -->
 			</h1>
-			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">LogOut</button>
+			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;float: right;">LogOut</button>
 		</div>
 		<div id="id01" class="modal">
-			<h1 style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
-				Hello Mentor
+			<h1 id="id09" style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
+				<!-- Hello Mentor -->
 			</h1>
 			<button onclick="document.getElementById('id02').style.display='block'" style=" background-color: green;float: left;width: 25vw;border:5px;margin: 5px;">Create Mentee</button>
 			<button onclick="document.getElementById('id01').style.display='block'" style=" background-color: blue;float: left;width: 25vw;border:5px;margin: 5px;">Sort Mentees</button>
-			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">LogOut</button>
+			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">SignOut</button>
 			<div id="id02" class="modal">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 					<form class="modal-content" onsubmit="return results()">
@@ -321,7 +321,11 @@
 			</div>
 		</div>
 		<script >
-			 
+
+			 var menteeName=document.getElementById("mentee").value;
+			 var mentorName=document.getElementById("mentor").value;
+			 document.getElementById("id08").innerHTML ='Hello ' +menteeName;
+			 document.getElementById("id09").innerHTML ='Hello '+mentorName;
 			function results()
 			{
 				saveData();
@@ -330,9 +334,9 @@
 
 			function saveData()
 			{
-				var name = document.getElementById('id04').value;
-				var Rating = document.getElementById('id05').value;
-				var comments = document.getElementById('id06').value;
+				var name = document.getElementById("id04").value;
+				var Rating = document.getElementById("id05").value;
+				var comments = document.getElementById("id06").value;
 				var Mentee_data = new Mentee(name,Rating,comments);
 				Mentee_list.push(Mentee_data);
 				localStorage.setItem('Mentee_lists',JSON.stringify(mentee_list)); 
