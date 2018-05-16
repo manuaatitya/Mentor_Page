@@ -339,7 +339,8 @@
 				var comments = document.getElementById("id06").value;
 				var Mentee_data = new Mentee(name,Rating,comments);
 				Mentee_list.push(Mentee_data);
-				localStorage.setItem('Mentee_lists',JSON.stringify(mentee_list)); 
+				console.log(Mentee_list);
+				window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list)); 
 			}
 
 			function Mentee(name,Rating,Comments)
@@ -348,6 +349,7 @@
 				this.Rating= Rating;
 				this.Comments= Comments;
 			}
+
 
 			/*
 			var modal = document.getElementById('id01');
