@@ -14,7 +14,6 @@
 				margin: 0;
 				padding-bottom: 0;
 			}
-
 			.flex-container
 			{
 				display: flex;
@@ -26,7 +25,6 @@
 				padding: 0;
 				flex-direction: none;
 			}
-
 			.flex-container > div
 			{
 				padding: 0;
@@ -54,25 +52,21 @@
 				margin: 0;
 				padding: 0;
 			}
-
 			p
 			{
 				margin: 0;
 				padding: 0;
 			}
-
 			body
 			{
 				margin: 0;
 				padding: 0;
 			}
-
 			header h1
 			{
 				margin: 0;
 				padding: 0;
 			}
-
 			/*
 			a:link, a:visited
 			{
@@ -83,12 +77,10 @@
 				display: inline-block;
 				padding:2px 5px;
 			}
-
 			a:hover
 			{
 				background-color: gray;
 			}
-
 			s*/
 			.flex-container .input
 			{
@@ -97,7 +89,6 @@
 				background-color: green;
 				padding: 5px;
 			}
-
 			@media (max-width: 600px)
 			{
 				.flex-container > div 
@@ -114,14 +105,12 @@
 					*/
 					transform: translate(25vw,-25vh);
 					flex-flow: column;
-
 				}
 				.flex-container .input
 				{
 					transform:translate(-15vw,-35vh);
 				}
 			}
-
 			@media (min-width: 600px) and (max-width: 800px)
 			{
 				.flex-container .input
@@ -130,34 +119,28 @@
 					background-color: green;
 					padding: 5px;
 				}
-
 			}
-
 			.clearfix::after
 			{
 				content: "";
 				clear: both;
 				display: table;
 			}
-
 			.close:hover,
 			.close:focus
 			{
 				color: blue;
 				cursor: pointer;
 			}
-
 			.hr
 			{
 				border: 1px solid #f1f1f1;
 				margin-bottom: 25px;
 			}
-
 			button:hover
 			{
 				opacity: 1;
 			}
-
 			.clearfix .submitbtn
 			{
 				padding: 14px 20px;
@@ -165,7 +148,6 @@
 				float: center;
 				width: 25vw;
 			}
-
 			.clearfix .cancelbtn
 			{
 				padding: 14px 20px;
@@ -173,12 +155,10 @@
 				float: center;
 				width: 25vw;
 			}
-
 			.container
 			{
 				padding: 16px;
 			}
-
 			.container input[type=text],input[type=decimal]
 			{
 				width: 50vw;
@@ -188,19 +168,16 @@
 				border: none;
 				color: blue;
 			}
-
 			.container input[type=text]:focus,input[type=decimal]:focus
 			{
 				background-color: yellow;
 				outline: none;
 			}
-
 			.flex-contianer .input input[type=text]:focus
 			{
 				background-color: yellow;
 				outline: none;
 			}
-
 			.modal 
 			{
 			    display: none; /* Hidden by default */
@@ -214,7 +191,6 @@
 			    background-color: #474e5d;
 			    padding-top: 50px;
 			}
-
 			.modal-content 
 			{
 			    background-color: #fefefe;
@@ -222,7 +198,6 @@
 			    border: 1px solid #888;
 			    width: 80%; /* Could be more or less, depending on screen size */
 			}
-
 			button
 			 {
 			    background-color: #4CAF50;
@@ -234,7 +209,6 @@
 			    width: 100%;
 			    opacity: 0.9;
 			}
-
 		</style>
 	</head>
 	<body>
@@ -277,20 +251,20 @@
 				</p>
 			</footer>
 		</div>
-		<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; transform: translate(74vw,-70vh);">Mentor Sign In</button>
+		<button onclick= "display_Mentor()"; style="width:auto; transform: translate(74vw,-70vh);">Mentor Sign In</button>
 		<button onclick="document.getElementById('id07').style.display='block'" style="width:auto; transform: translate(13vw,-70vh);">Mentee Sign In</button>
 		<div id="id07" class="modal">
 			<h1 id="id08" style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
 				<!-- Hello Mentee -->
 			</h1>
-			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;float: right;">LogOut</button>
+			<button  onclick="document.getElementById('id07').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;float: right;">LogOut</button>
 		</div>
 		<div id="id01" class="modal">
 			<h1 id="id09" style="text-align: center;background-color: white;color: black;border:none;padding: 0;">
 				<!-- Hello Mentor -->
 			</h1>
 			<button onclick="document.getElementById('id02').style.display='block'" style=" background-color: green;float: left;width: 25vw;border:5px;margin: 5px;">Create Mentee</button>
-			<button onclick="document.getElementById('id01').style.display='block'" style=" background-color: blue;float: left;width: 25vw;border:5px;margin: 5px;">Sort Mentees</button>
+			<button onclick="function sort_mentees()" style=" background-color: blue;float: left;width: 25vw;border:5px;margin: 5px;">Sort Mentees</button>
 			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">SignOut</button>
 			<div id="id02" class="modal">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -312,10 +286,12 @@
 								<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">
 									Cancel
 								</button>
-								<button type="submit" class="submitbtn" onclick="return results()">
+								<button type="submit" class="submitbtn" onclick="results()">
 									Submit
 								</button>
 							</div>
+							<br>
+							<h4>Once You Enter details Please click Submit</h4>
 						</div>
 					</div>
 			</div>
@@ -327,27 +303,40 @@
 		</div>
 		
 		<script >
+			function display_Mentor()
+			{
+				document.getElementById('id01').style.display='block';
+			}
 
 			 var menteeName=document.getElementById("mentee").value;
 			 var mentorName=document.getElementById("mentor").value;
 			 document.getElementById("id08").innerHTML ='Hello ' +menteeName;
 			 document.getElementById("id09").innerHTML ='Hello '+mentorName;
 			 document.getElementById("id10").innerHTML ='Hello ' +mentorName;
+
 			function results()
 			{
 				saveData();
-				document.getElementById('id01').style.display='block';
+				document.getElementById("id02").style.display='none';
 				display_Mentee();
 			}
+
 			var Mentee_list =[];
 
 			function display_Mentee()
 			{
-				for (var i =0;i<len(Mentee_list);i++)
+				for (var i =0;i<(Mentee_list.length);i++)
 				{
 					document.innerHTML=Mentee_list[i];
 				}
 			}
+
+			function sort_mentees()
+			{
+				document.getElementById('id01').style.display='block';
+				Mentee_list.Rating.sort();
+			}
+
 			function saveData()
 			{
 				var name = document.getElementById("id04").value;
@@ -356,11 +345,11 @@
 				var Mentee_data = new Mentee(name,Rating,comments);
 				Mentee_list.push(Mentee_data);
 				console.log(Mentee_list);
-				window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list)); 
+				window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list));
 			}
-
 			function Mentee(name,Rating,Comments)
 			{
+				this.mentor=mentorName;
 				this.name= name;
 				this.Rating= Rating;
 				this.Comments= Comments;
@@ -368,7 +357,6 @@
 
 			/*
 			var modal = document.getElementById('id01');
-
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) 
 			{
