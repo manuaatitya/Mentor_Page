@@ -294,10 +294,10 @@
 			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">SignOut</button>
 			<div id="id02" class="modal">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-					<form class="modal-content" onsubmit="return results()">
+					<div class="modal-content">
 						<div class="container">
-							<h1>
-								 Hello Mentor 
+							<h1 id="id10">
+
 							</h1>
 							<hr>
 							<label for "mentee-name"><b>Mentee Name</b></label>
@@ -312,26 +312,42 @@
 								<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">
 									Cancel
 								</button>
-								<button type="submit" class="submitbtn">
+								<button type="submit" class="submitbtn" onclick="return results()">
 									Submit
 								</button>
 							</div>
 						</div>
-					</form>
+					</div>
+			</div>
+			<div>
+				<h2 style="text-align: center;background-color: white;color: black;transform: translate(0,10vh);text-overflow: ellipsis;">
+					List of Mentees Under You
+				</h2>
 			</div>
 		</div>
+		
 		<script >
 
 			 var menteeName=document.getElementById("mentee").value;
 			 var mentorName=document.getElementById("mentor").value;
 			 document.getElementById("id08").innerHTML ='Hello ' +menteeName;
 			 document.getElementById("id09").innerHTML ='Hello '+mentorName;
+			 document.getElementById("id10").innerHTML ='Hello ' +mentorName;
 			function results()
 			{
 				saveData();
+				document.getElementById('id01').style.display='block';
+				display_Mentee();
 			}
 			var Mentee_list =[];
 
+			function display_Mentee()
+			{
+				for (var i =0;i<len(Mentee_list);i++)
+				{
+					document.innerHTML=Mentee_list[i];
+				}
+			}
 			function saveData()
 			{
 				var name = document.getElementById("id04").value;
@@ -349,7 +365,6 @@
 				this.Rating= Rating;
 				this.Comments= Comments;
 			}
-
 
 			/*
 			var modal = document.getElementById('id01');
