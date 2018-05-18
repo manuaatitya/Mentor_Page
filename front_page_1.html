@@ -106,9 +106,19 @@
 					transform: translate(25vw,-25vh);
 					flex-flow: column;
 				}
-				.flex-container .input
+				.flex-container > input
 				{
-					transform:translate(-15vw,-35vh);
+					transform:translate(-15vw,35vh);
+				}
+
+				.input
+				{
+					transform: translate(0,0);
+				}
+
+				button
+				{
+					transform: translate(-5vw,10vh);
 				}
 			}
 			@media (min-width: 600px) and (max-width: 800px)
@@ -324,17 +334,17 @@
 				<h2 style="text-align: center;background-color: white;color: black;transform: translate(0,10vh);text-overflow: ellipsis;">
 					List of Mentees Under You
 				</h2>
+
 			</div>
 		</div>
-		<!--
-		<div class="collapsible_content">
-			<button class="collapsible">Open Collapsible </button>
+		<!-- =========================================================================================                    -->
+		<div class="mentor_display">
+			<button class="collapsible"></button>
 			<div class="content">
-				<p>
-					my collapsible
-				</p>
+				<p id="id16"></p>
 			</div>
-		-->
+		</div>
+		<!-- ============================================================================================ -->
 		</div>
 		<script >
 			function display_Mentor()
@@ -360,14 +370,20 @@
 
 			var Mentee_list =[];
 
+			/* ====================================================================================== */
 			function display_Mentee()
 			{
-				for (var i =0;i<(Mentee_list.length);i++)
+				document.getElementsByClassName("mentor_display").style.display='block';
+				if(localStorage.(Mentee_list.length))
 				{
-					document.innerHTML=Mentee_list[i];
+					for(var i=0;i<Mentee_list.length;i++)
+					{
+						document.getElementsByClassName("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : 'Mentee_list[i].Rating;
+						document.getElementById("id16").innerHTML='Comments :'+ Mentee_list[i].comments;
+					}
 				}
 			}
-
+			/* ====================================================================================== */
 			function sort_mentees()
 			{
 				document.getElementById('id01').style.display='block';
