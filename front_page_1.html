@@ -209,6 +209,31 @@
 			    width: 100%;
 			    opacity: 0.9;
 			}
+			.collapsible 
+			{
+			    background-color: #777;
+			    color: white;
+			    cursor: pointer;
+			    padding: 18px;
+			    width: 100%;
+			    border: none;
+			    text-align: left;
+			    outline: none;
+			    font-size: 15px;
+			}
+			.active, .collapsible:hover 
+			{
+    			background-color: #555;
+			}
+
+			.content 
+			{
+			    padding: 0 18px;
+			    display: none;
+			    overflow: hidden;
+			    background-color: #f1f1f1;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -264,7 +289,7 @@
 				<!-- Hello Mentor -->
 			</h1>
 			<button onclick="document.getElementById('id02').style.display='block'" style=" background-color: green;float: left;width: 25vw;border:5px;margin: 5px;">Create Mentee</button>
-			<button onclick="function sort_mentees()" style=" background-color: blue;float: left;width: 25vw;border:5px;margin: 5px;">Sort Mentees</button>
+			<button onclick="sort_mentees()" style=" background-color: blue;float: left;width: 25vw;border:5px;margin: 5px;">Sort Mentees</button>
 			<button  onclick="document.getElementById('id01').style.display='none'" style=" background-color: red;float: left;width: 25vw;border:5px;margin: 5px;">SignOut</button>
 			<div id="id02" class="modal">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -301,7 +326,16 @@
 				</h2>
 			</div>
 		</div>
-		
+		<!--
+		<div class="collapsible_content">
+			<button class="collapsible">Open Collapsible </button>
+			<div class="content">
+				<p>
+					my collapsible
+				</p>
+			</div>
+		-->
+		</div>
 		<script >
 			function display_Mentor()
 			{
@@ -318,6 +352,9 @@
 			{
 				saveData();
 				document.getElementById("id02").style.display='none';
+				document.getElementById("id04").value='';
+				document.getElementById("id05").value='';
+				document.getElementById("id06").value='';
 				display_Mentee();
 			}
 
@@ -334,7 +371,18 @@
 			function sort_mentees()
 			{
 				document.getElementById('id01').style.display='block';
+				/*
 				Mentee_list.Rating.sort();
+				window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list));
+				*/
+				var byRating= Mentee_list.slice(0);
+				byRating.sort(function(a,b)
+				{
+					return a.Rating- b.Rating;
+				});
+				window.localStorage.setItem('Mentee_list',JSON.stringify(byRating));
+				console.log('Mentee_list',byRating);
+				//window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list));
 			}
 
 			function saveData()
@@ -353,6 +401,25 @@
 				this.name= name;
 				this.Rating= Rating;
 				this.Comments= Comments;
+			}
+
+			var i;
+			var coll=document.getElementsByClassName("collapsible");
+			for(i=0;i<coll.length;i++)
+			{
+				coll[i].addEventListener("click",function()
+				{
+					this.classList.toggle("active");
+					var content=this.nextElementSibiling;
+					if(content.style.display==="block")
+					{
+						content.style.display="none";
+					}
+					else
+					{
+						content.style.display ="block";
+					}
+				});
 			}
 
 			/*
