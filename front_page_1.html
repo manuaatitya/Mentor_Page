@@ -373,12 +373,12 @@
 			/* ====================================================================================== */
 			function display_Mentee()
 			{
-				document.getElementsId("mentor_display").style.display='block';
+				document.getElementId("mentor_display").style.display='block';
 				if(localStorage.getitem(Mentee_list.length))
 				{
 					for(var i=0;i<Mentee_list.length;i++)
 					{
-						document.getElementsById("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
+						document.getElementById("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
 						document.getElementById("id16").innerHTML='Comments :'+ Mentee_list[i].comments;
 					}
 				}
