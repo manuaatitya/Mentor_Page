@@ -338,8 +338,8 @@
 			</div>
 		</div>
 		<!-- =========================================================================================                    -->
-		<div class="mentor_display">
-			<button class="collapsible"></button>
+		<div id="mentor_display">
+			<button id="" ="collapsible"></button>
 			<div class="content">
 				<p id="id16"></p>
 			</div>
@@ -373,12 +373,12 @@
 			/* ====================================================================================== */
 			function display_Mentee()
 			{
-				document.getElementsByClassName("mentor_display").style.display='block';
+				document.getElementsId("mentor_display").style.display='block';
 				if(localStorage.getitem(Mentee_list.length))
 				{
 					for(var i=0;i<Mentee_list.length;i++)
 					{
-						document.getElementsByClassName("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
+						document.getElementsById("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
 						document.getElementById("id16").innerHTML='Comments :'+ Mentee_list[i].comments;
 					}
 				}
