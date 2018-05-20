@@ -375,9 +375,10 @@
 			function display_Mentee()
 			{
 				document.getElementById("mentor_display").style.display='block';
-				if(JSON.parse(Mentee_list).length)
+				var parsed_list = JSON.parse(Mentee_list) 
+				if(parsed_list.length)
 				{
-					for(var i=0;i<JSON.parse(Mentee_list).length;i++)
+					for(var i=0;i<parsed_list.length;i++)
 					{
 						document.getElementById("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
 						document.getElementById("id16").innerHTML='Comments :'+ Mentee_list[i].comments;
