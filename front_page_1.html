@@ -224,12 +224,12 @@
 			    background-color: #777;
 			    color: white;
 			    cursor: pointer;
-			    padding: 18px;
+			    padding: 0px;
 			    width: 100%;
 			    border: none;
 			    text-align: left;
 			    outline: none;
-			    font-size: 15px;
+			    font-size: 25px;
 			}
 			.active, .collapsible:hover 
 			{
@@ -339,11 +339,6 @@
 
 			<div id="mentor_display" style="margin-top: 100px;">
 			</div>
-		</div>
-		<!-- =========================================================================================                    -->
-		
-		<!-- ============================================================================================ -->
-		</div>
 		<script >
 			document.getElementById("mentor_display").style.display='none';
 			function display_Mentor()
@@ -373,14 +368,15 @@
 			function display_Mentee()
 			{
 				document.getElementById("mentor_display").style.display='block';
-				//var parsed_list = JSON.parse(Mentee_list) 
+				var colour = Mentee_list.length;
+				colour = (255/colour) ;
 				if(Mentee_list.length)
 				{
 					var listData = "";
 					for(var i=0;i<Mentee_list.length;i++)
 					{
-						var styleVal = 'style="background-color:rcb(123,123,123)"';
-						listData= listData + '<div class="collapsible"><button '+styleVal+'>Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating+"</button>"+
+						var styleVal = 'style="background-color:rgb(255-(i*colour),255+(i*colour),0);margin:0;"';
+						listData= listData + '<div class="collapsible"><button '+styleVal+'>Name : ' +Mentee_list[i].name+'&emsp;'+'Rating : '+Mentee_list[i].Rating+"</button>"+
 						'<div class="content"><p>Comments : '+ Mentee_list[i].comments+'</p></div></div>';
 					}
 					document.getElementById("mentor_display").innerHTML = listData;
@@ -400,7 +396,7 @@
 					return a.Rating- b.Rating;
 				});
 				window.localStorage.setItem('Mentee_list',JSON.stringify(byRating));
-				Mentee_list = byRating;
+				Mentee_list = byRating.reverse();                                            
 				console.log('Mentee_list',byRating);
 				display_Mentee();
 
