@@ -336,14 +336,12 @@
 				</h2>
 
 			</div>
-		</div>
-		<!-- =========================================================================================                    -->
-		<div id="mentor_display">
-			<button id="" ="collapsible"></button>
-			<div class="content">
-				<p id="id16"></p>
+
+			<div id="mentor_display" style="margin-top: 100px;">
 			</div>
 		</div>
+		<!-- =========================================================================================                    -->
+		
 		<!-- ============================================================================================ -->
 		</div>
 		<script >
@@ -375,18 +373,21 @@
 			function display_Mentee()
 			{
 				document.getElementById("mentor_display").style.display='block';
-				var parsed_list = JSON.parse(Mentee_list) 
-				if(parsed_list.length)
+				//var parsed_list = JSON.parse(Mentee_list) 
+				if(Mentee_list.length)
 				{
-					for(var i=0;i<parsed_list.length;i++)
+					var listData = "";
+					for(var i=0;i<Mentee_list.length;i++)
 					{
-						document.getElementById("collapsible").innerHTML='Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating;
-						document.getElementById("id16").innerHTML='Comments :'+ Mentee_list[i].comments;
+						var styleVal = 'style="background-color:rcb(123,123,123)"';
+						listData= listData + '<div class="collapsible"><button '+styleVal+'>Name : ' +Mentee_list[i].name+'Rating : '+Mentee_list[i].Rating+"</button>"+
+						'<div class="content"><p>Comments : '+ Mentee_list[i].comments+'</p></div></div>';
 					}
+					document.getElementById("mentor_display").innerHTML = listData;
 				}
 			}
 			/* ====================================================================================== */
-			function sort_mentees()
+			function sort_mentees() 
 			{
 				document.getElementById('id01').style.display='block';
 				/*
@@ -399,7 +400,10 @@
 					return a.Rating- b.Rating;
 				});
 				window.localStorage.setItem('Mentee_list',JSON.stringify(byRating));
+				Mentee_list = byRating;
 				console.log('Mentee_list',byRating);
+				display_Mentee();
+
 				//window.localStorage.setItem('Mentee_list',JSON.stringify(Mentee_list));
 			}
 
